@@ -1,4 +1,5 @@
 import os
+import shutil
 import requests
 import urllib.request
 import zipfile
@@ -68,4 +69,5 @@ if __name__ == '__main__':
     zip_ref.extractall('assets')
     zip_ref.close()
     os.remove('DataAndCheckpoint.zip')
+    shutil.move('Float16EmbeddingsExpanded5-27-19.pkl', 'assets')
     print('All files were successfully downloaded!')

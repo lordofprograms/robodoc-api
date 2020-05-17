@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from src.models import Answer
 from src.qa_model import QAModel
 from src.translator import Translator
@@ -22,6 +22,8 @@ async def ask(question: str, lang: str):
         orig_result = qa_model.predict(question)[0]
         trans_result = translator.translate(orig_result)
         return {"original_answer": orig_result, "translated_answer": trans_result}
-    else:
+    elif lang == "en":
         result = qa_model.predict(question)[0]
         return {"original_answer": result, "translated_answer": result}
+    else:
+        raise HTTPException(400, "Only uk(Ukrainian) and en(English) languages are supported!")
