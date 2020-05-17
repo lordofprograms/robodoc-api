@@ -6,12 +6,12 @@ from src.translator import Translator
 
 app = FastAPI()
 
-biobert_path = '../BioBertFolder/biobert_v1.0_pubmed_pmc/'
-bert_fnn_weights = '../assets/models/bertffn_crossentropy/bertffn'
-embedding_file = '../assets/Float16EmbeddingsExpanded5-27-19.pkl'
+biobert_path = 'BioBertFolder/biobert_v1.0_pubmed_pmc/'
+bert_fnn_weights = 'assets/models/bertffn_crossentropy/bertffn'
+embedding_file = 'assets/Float16EmbeddingsExpanded5-27-19.pkl'
 qa_model = QAModel(biobert_path, bert_fnn_weights, embedding_file)
 
-translator = Translator(creds_path='../gct_creds.json')
+translator = Translator(creds_path='gct_creds.json')
 
 
 @app.get('/api/v1/ask', response_model=Answer)
