@@ -22,7 +22,7 @@ async def ask(question: str, lang: str):
         # return only 1 answer
         orig_result = qa_model.predict(question)[0]
         trans_result = translator.translate(orig_result)
-        return {"original_answer": orig_result, "translated_answer": trans_result}
+        return {"question": question, "original_answer": orig_result, "translated_answer": trans_result}
     else:
         result = qa_model.predict(question)[0]
         return {"original_answer": result, "translated_answer": result}
