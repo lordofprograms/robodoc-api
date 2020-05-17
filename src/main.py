@@ -1,4 +1,4 @@
-from src.model import QAModel
+from model import QAModel
 
 
 if __name__ == '__main__':
