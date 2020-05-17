@@ -18,6 +18,7 @@ translator = Translator(creds_path='gct_creds.json')
 async def ask(question: str, lang: str):
     if lang == 'uk':
         question = translator.translate(question, target=lang)
+        print(question)
         # return only 1 answer
         orig_result = qa_model.predict(question)[0]
         trans_result = translator.translate(orig_result)
