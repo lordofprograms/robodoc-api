@@ -17,8 +17,7 @@ translator = Translator(creds_path='gct_creds.json')
 @app.get('/api/v1/ask', response_model=Answer)
 async def ask(question: str, lang: str):
     if lang == 'uk':
-        question = translator.translate(question, target=lang)
-        print(question)
+        question = translator.translate(question, target="en")
         # return only 1 answer
         orig_result = qa_model.predict(question)[0]
         trans_result = translator.translate(orig_result)
